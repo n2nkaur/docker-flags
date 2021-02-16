@@ -1,0 +1,15 @@
+version: '2'
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./flags:/var/www
+      - ./data/tmp:/tmp
+      - ./data/composer-vendor:/var/lib/composer-vendor
+    logging:
+      options:
+        max-size: "10k"
+    ports:
+      - "8000:80"

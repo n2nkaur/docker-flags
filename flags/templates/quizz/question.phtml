@@ -1,0 +1,28 @@
+<div>
+    Guess which country has the following flag:
+</div>
+<div class="flag-container">
+    <img
+        class="flag"
+        src="<?= $country->getFlagUrl(); ?>"
+        title="<?= $country->alpha2; ?>"
+    />
+</div>
+<form method="POST">
+    <input type="hidden" name="country" value="<?= $country->alpha2 ?>">
+    <ul class="answer-list">
+    <?
+        foreach ($answers as $answerCountry) {
+            $alpha2 = $answerCountry->alpha2;
+            echo '<li>';
+            echo '<input type="radio" name="answer" id="answer-' . $alpha2 .'" value="' . $alpha2 . '" />';
+            echo '<label for="answer-' . $alpha2 . '">';
+            echo $answerCountry->name;
+            echo " (", $answerCountry->alpha2, ")";
+            echo '</label>';
+            echo '</li>';
+        }
+    ?>
+    </ul>
+    <input type="submit" />
+</form>

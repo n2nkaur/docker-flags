@@ -1,0 +1,31 @@
+<h1>
+<?= ($isCorrect) ? 'Correct!' : 'Wrong...' ?>
+</h1>
+<div class="flag-container">
+    <img
+        class="flag"
+        src="<?= $correctAnswer->getFlagUrl(); ?>"
+        title="<?= $correctAnswer->alpha2; ?>"
+    />
+</div>
+<div>
+    This is the flag of <strong><?= $correctAnswer->name; ?></strong>
+</div>
+
+<? if (!$isCorrect) { ?>
+<div>
+    ...but your answer was <strong><?= $givenAnswer->name; ?></strong>
+</div>
+<? } ?>
+
+<div>
+    <ul>
+        <li>
+            <a href="/quizz">Try another flag</a>
+        </li>
+        <li>
+            <a href="/">Back to home screeen</a>
+        </li>
+    </ul>
+</div>
+

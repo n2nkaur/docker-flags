@@ -1,0 +1,106 @@
+<h1>Round Table Plan</h1>
+
+<script>
+var flagWidth = 40
+var flagHeight = 20 // used for approximation
+var tableRadius = 100
+
+function getCountries () {
+    // FIXME i need to implement fetching countries by AJAX
+    // FIXME for now they are hardcoded
+
+    var countries = [
+        { flagUrl: "/flag-images/br.png", alpha2: "BR", name: "Brazil" },
+        { flagUrl: "/flag-images/cu.png", alpha2: "CU", name: "Cuba" },
+        { flagUrl: "/flag-images/cg.png", alpha2: "CG", name: "Congo" },
+        { flagUrl: "/flag-images/gr.png", alpha2: "GR", name: "Greece" }
+    ]
+    return countries
+}
+
+function findOppositeCountry (index, allRecords) {
+    switch (index) {
+        case 0: return allRecords[2];
+        case 1: return allRecords[3];
+        case 2: return allRecords[0];
+        case 3: return allRecords[1];
+    }
+}
+
+function placeFlag (countryRecord, index, allRecords) {
+    function showInfo () {
+        var opposite = findOppositeCountry(index, allRecords)
+        var text = countryRecord.name + ' sits opposite to ' + opposite.name
+        window.alert(text)
+    }
+
+    var x
+    var y
+
+    var tableX = 200
+    var tableY = 200
+
+    var distanceFromCenter = tableRadius + flagWidth + 5
+
+    switch (index) {
+        case 0:
+            x = distanceFromCenter
+            y = 0
+            break
+        case 1:
+            x = 0
+            y = -distanceFromCenter
+            break
+        case 2:
+            x = -distanceFromCenter
+            y = 0
+            break
+        case 3:
+            x = 0
+            y = distanceFromCenter
+            break
+    }
+
+    var flagX = tableX + x - (flagWidth / 2)
+    var flagY = tableY + y - (flagHeight / 2)
+    var $flag = $('<img>')
+    $flag
+        .css({
+            position: 'absolute',
+            left: flagX + 'px',
+            top: flagY + 'px',
+            width: flagWidth,
+            // height will be selected proportionally
+        })
+        .attr('src', countryRecord.flagUrl)
+        .attr('title', countryRecord.alpha2)
+        .attr('class', 'mini-flag')
+        .click(showInfo)
+
+    $('.flag-positioning').append($flag)
+}
+
+function placeAllFlags () {
+    // remove existing flags
+    $('.flag-positioning').empty();
+
+    var countryRecords = getCountries()
+    var seatCount = parseInt($('#seatCount').val())
+    var selectedCountries = countryRecords.slice(0, seatCount)
+    for (var i = 0; i < countryRecords.length; i++) {
+        var countryRecord = countryRecords[i]
+        placeFlag(countryRecord, i, selectedCountries)
+    }
+}
+
+</script>
+
+<form>
+    Seats: <input value="4" id="seatCount" />
+    <button type="button" onclick="placeAllFlags()">place</button>
+</form>
+
+<div class="meeting-room">
+    <img src="/round-table.png" class="round-table" />
+    <div class="flag-positioning" />
+</div>
