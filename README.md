@@ -22,6 +22,10 @@ After clicking "submit" the user should see if his answer was right or wrong.
 
 No anti-cheat mechanism is required.
 
+The previous developer implemented this feature, but there are a few problem.
+
+Please find and fix them.
+
 
 ## Round Table Plan
 
@@ -35,18 +39,9 @@ When the users click "place" the random countries are selected and placed around
 
 User can click a flag. For example if the Greece flag is clicked, then the message should say "Greece sits opposite to Australia". The opposite country is detected automatically based on the table layout.
 
+Another developer started this task. Here is his todo list:
 
-# Notes from the developer
-
-Default Slim dummy project was sued. Probaly some code is redundant (unused)
-
-I have done the Flag Quizz and created a prototype for the Round Table Plan.
-
-I didn't test Flag Quizz properly. Could you test and fix if I forgot there something?
-
-In the Round Table Plan there's much to do:
-
-- Get countries by AJAX (both PHP and JS side)
-- In my prototype only 4 seats are supported. But it should be dynamic based on input
-- I didn't do the input validation (no check for the even value)
+- Get countries using AJAX (both PHP and JS side)
+- Support dynamic number of seats (currently there are only 4 seats supported)
+- Add validation (there is no check for the even value currently)
 - The opposite country detection probably needs to be updated in case of the dynamic seat count
