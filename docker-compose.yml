@@ -5,9 +5,12 @@ services:
       context: .
       dockerfile: Dockerfile
     volumes:
-      - ./flags:/var/www
+      - ./flags/html:/var/www/html
+      - ./flags/app:/var/www/app
+      - ./flags/src:/var/www/src
+      - ./flags/templates:/var/www/templates
+      - ./flags/wikipedia-iso-country-codes.csv:/var/www/wikipedia-iso-country-codes.csv
       - ./data/tmp:/tmp
-      - ./data/composer-vendor:/var/lib/composer-vendor
     logging:
       options:
         max-size: "10k"
