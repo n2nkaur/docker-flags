@@ -50,4 +50,5 @@ a, a:visited {
 
 .mini-flag {
   border: 1px solid black;
+  cursor: pointer;
 }
