@@ -19,6 +19,9 @@ return function (App $app) {
 
     $app->get('/', HomeController::class . ':showIndex');
 
+    // if no mode_rewrite module is being used, still redirect to index
+    $app->get('/{routes:.*}.php', HomeController::class . ':showIndex');
+
     $app->group('/quizz', function (Group $group) {
         $group->get('', FlagQuizzController::class . ':showQuestion');
         $group->post('', FlagQuizzController::class . ':processAnswer');
