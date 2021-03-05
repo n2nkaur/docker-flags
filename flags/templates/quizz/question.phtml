@@ -1,5 +1,5 @@
 <div>
-    Guess which country has the following flag:
+    Here is the flag:
 </div>
 <div class="flag-container">
     <img
@@ -10,7 +10,7 @@
 </div>
 <form method="POST">
     <input type="hidden" name="country" value="<?= $country->alpha2 ?>">
-    <p>Pick the right out <?= count($answers) ?> countries:</p>
+    <p>Pick the right country out of <b><?= count($answers) ?></b> variants:</p>
     <ul class="answer-list">
     <?
         foreach ($answers as $answerCountry) {
