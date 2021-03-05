@@ -10,6 +10,7 @@
 </div>
 <form method="POST">
     <input type="hidden" name="country" value="<?= $country->alpha2 ?>">
+    <p>Pick the right out <?= count($answers) ?> countries:</p>
     <ul class="answer-list">
     <?
         foreach ($answers as $answerCountry) {
