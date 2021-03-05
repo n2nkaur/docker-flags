@@ -22,7 +22,7 @@ After clicking "submit" the user should see if his answer was right or wrong.
 
 No anti-cheat mechanism is required.
 
-The previous developer implemented this feature, but there are a few problem.
+The previous developer implemented this feature, but there are a couple of problems.
 
 Please find and fix them.
 
