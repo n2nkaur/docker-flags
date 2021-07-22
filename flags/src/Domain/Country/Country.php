@@ -4,11 +4,11 @@ declare(strict_types=1);
 namespace App\Domain\Country;
 
 class Country {
-    public string $name;
-    public string $alpha2;
-    public string $alpha3;
-    public string $numeric;
-    public string $iso3166;
+    public $name;
+    public $alpha2;
+    public $alpha3;
+    public $numeric;
+    public $iso3166;
 
     public function getFlagUrl() {
         return '/flag-images/' . strtolower($this->alpha2) . '.png';

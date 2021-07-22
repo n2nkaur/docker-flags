@@ -7,7 +7,7 @@ use Slim\Psr7\Request;
 class FlagQuizzController extends AbstractController {
     const ANSWER_COUNT = 10;
 
-    public function showQuestion (Request $request, Response $response): Response {
+    public function showQuestion (Request $request, Response $response) {
         $countryRepo = $this->getCountryRepository();
         $country = $countryRepo->getRandomCountry();
 
@@ -24,7 +24,7 @@ class FlagQuizzController extends AbstractController {
         return $this->getView()->render($response, 'quizz/question.phtml', $data);
     }
 
-    public function processAnswer (Request $request, Response $response): Response {
+    public function processAnswer (Request $request, Response $response) {
         $countryRepo = $this->getCountryRepository();
         $body = $request->getParsedBody();
 

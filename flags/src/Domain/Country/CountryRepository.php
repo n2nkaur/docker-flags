@@ -26,7 +26,7 @@ class CountryRepository
         return $this->countries;
     }
 
-    public function findByAlpha2(string $alpha2): Country
+    public function findByAlpha2($alpha2): Country
     {
         foreach ($this->countries as $country) {
             if ($country->alpha2 == $alpha2) {
@@ -37,11 +37,11 @@ class CountryRepository
         return null;
     }
 
-    public function getByIndex (int $index): Country {
+    public function getByIndex ($index): Country {
         return $this->countries[$index];
     }
 
-    public function getCount (): int {
+    public function getCount () {
         return count($this->countries);
     }
 
