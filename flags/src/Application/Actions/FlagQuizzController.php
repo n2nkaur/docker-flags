@@ -15,11 +15,10 @@ class FlagQuizzController extends AbstractController {
         for ($i = 0; $i < self::ANSWER_COUNT - 1; $i++) {
             $answers[] = $countryRepo->getRandomCountry();
         }
-        shuffle($answers);
 
         $data = [
             'country' => $country,
-            'answers' => $answers,
+            'answers' => $this->sortAnswersArray($answers)
         ];
         return $this->getView()->render($response, 'quizz/question.phtml', $data);
     }
@@ -35,5 +34,27 @@ class FlagQuizzController extends AbstractController {
         ];
 
         return $this->getView()->render($response, 'quizz/answer.phtml', $data);
+    }
+    
+    public function sortAnswersArray($answers){
+        
+        foreach($answers as $ans){
+            
+            $sortingArray[] = [
+                'name' => $ans->name,
+                'alpha2' => $ans->alpha2
+            ];
+        }
+        
+        $names= [];
+
+        //Iterating over array
+        foreach ($sortingArray as $key =>$val){
+            $names[$key] = $val['name'];
+        }
+        // Sorting array in alphabetical order as per name key
+        array_multisort($names, SORT_ASC, $sortingArray);
+        return $sortingArray;
+
     }
 }
