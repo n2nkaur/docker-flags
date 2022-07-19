@@ -81,6 +81,22 @@ function placeFlag (countryRecord, index, allRecords) {
 }
 
 function placeAllFlags () {
+    //Checking validation
+    var inputNumber= document.getElementById("seatCount");
+    var error = document.getElementById("validation_error");
+   
+    var inputNumberValue= inputNumber.value;
+    var numberValue= inputNumberValue.replace("/[^0-9]+/","");
+   
+    if(numberValue.length != inputNumberValue.length || numberValue%2 != 0){
+        if(error.style.display === "none"){
+            error.style.display = "block";
+        }else{
+            error.style.display = "none";
+        }
+       
+    }
+    
     // remove existing flags
     $('.flag-positioning').empty();
 
@@ -99,6 +115,9 @@ function placeAllFlags () {
     Seats: <input value="4" id="seatCount" />
     <button type="button" onclick="placeAllFlags()">place</button>
 </form>
+<div style="color:red;display:none;" id= "validation_error">
+        Value cannot be odd.
+    </div>
 
 <div class="meeting-room">
     <img src="/round-table.png" class="round-table" />
