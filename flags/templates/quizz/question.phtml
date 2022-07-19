@@ -14,12 +14,12 @@
     <ul class="answer-list">
     <?
         foreach ($answers as $answerCountry) {
-            $alpha2 = $answerCountry->alpha2;
+            $alpha2 = $answerCountry['alpha2'];
             echo '<li>';
             echo '<input type="radio" name="answer" id="answer-' . $alpha2 .'" value="' . $alpha2 . '" />';
             echo '<label for="answer-' . $alpha2 . '">';
-            echo $answerCountry->name;
-            echo " (", $answerCountry->alpha2, ")";
+            echo $answerCountry['name'];
+            echo " (", $alpha2, ")";
             echo '</label>';
             echo '</li>';
         }
